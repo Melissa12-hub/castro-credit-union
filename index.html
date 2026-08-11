@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Castro Credit Union — Banking, owned by members</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest: #17362B;
+    --forest-deep: #0E241C;
+    --paper: #F5F2EA;
+    --sage: #9FBBA0;
+    --gold: #B08A4E;
+    --ink: #16201B;
+    --line: rgba(23,54,43,0.14);
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Sans 3', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:450; letter-spacing:-0.01em; }
+  .mono{ font-family:'IBM Plex Mono', monospace; letter-spacing:0.02em; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+
+  /* Focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold); outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    background: rgba(245,242,234,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px; max-width:1180px; margin:0 auto;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Fraunces', serif; font-size:1.15rem; font-weight:600; }
+  .mark{
+    width:30px; height:30px; border-radius:50%;
+    background: conic-gradient(from 0deg, var(--forest) 0 25%, var(--sage) 25% 50%, var(--forest) 50% 75%, var(--sage) 75% 100%);
+    flex-shrink:0;
+  }
+  .navlinks{ display:flex; gap:36px; font-size:0.95rem; }
+  .navlinks a{ opacity:0.75; transition:opacity 0.2s; }
+  .navlinks a:hover{ opacity:1; }
+  .navcta{
+    padding:10px 20px; background:var(--forest); color:var(--paper);
+    border-radius:2px; font-size:0.9rem; transition:background 0.2s;
+  }
+  .navcta:hover{ background:var(--forest-deep); }
+  .navmobile{ display:none; }
+
+  /* HERO */
+  .hero{
+    padding:96px 32px 80px;
+    max-width:1180px; margin:0 auto;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:end;
+  }
+  .eyebrow{
+    font-size:0.8rem; text-transform:uppercase; letter-spacing:0.12em;
+    color:var(--forest); opacity:0.7; margin-bottom:20px; display:block;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5vw, 4.2rem);
+    line-height:1.04;
+    max-width:11ch;
+  }
+  .hero h1 em{ font-style:italic; color:var(--gold); }
+  .hero-sub{
+    margin-top:24px; font-size:1.15rem; line-height:1.6; max-width:42ch; opacity:0.85;
+  }
+  .hero-actions{ display:flex; gap:16px; margin-top:36px; }
+  .btn-primary{
+    padding:14px 28px; background:var(--forest); color:var(--paper);
+    border-radius:2px; font-size:0.95rem; font-weight:500;
+    transition:transform 0.2s, background 0.2s; display:inline-block;
+  }
+  .btn-primary:hover{ background:var(--forest-deep); transform:translateY(-1px); }
+  .btn-ghost{
+    padding:14px 28px; border:1px solid var(--line); border-radius:2px;
+    font-size:0.95rem; transition:border-color 0.2s;
+  }
+  .btn-ghost:hover{ border-color:var(--forest); }
+
+  /* SIGNATURE: ownership ring diagram */
+  .ring-panel{
+    border:1px solid var(--line); background:rgba(255,255,255,0.4);
+    padding:32px; border-radius:4px;
+  }
+  .ring-panel .mono{ font-size:0.78rem; text-transform:uppercase; opacity:0.6; }
+  .ring-visual{
+    position:relative; width:100%; aspect-ratio:1; margin:20px auto; max-width:260px;
+  }
+  .ring-visual svg{ width:100%; height:100%; }
+  .ring-stat{
+    text-align:center; margin-top:16px;
+  }
+  .ring-stat .big{ font-family:'Fraunces', serif; font-size:2.4rem; color:var(--forest); }
+  .ring-stat .cap{ font-size:0.85rem; opacity:0.7; margin-top:4px; }
+
+  /* STRIP */
+  .strip{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:rgba(23,54,43,0.03);
+  }
+  .strip .wrap{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    padding:28px 32px;
+  }
+  .strip-item{ text-align:center; border-right:1px solid var(--line); padding:0 16px; }
+  .strip-item:last-child{ border-right:none; }
+  .strip-item .mono{ font-size:0.78rem; opacity:0.6; display:block; margin-bottom:6px; }
+  .strip-item .val{ font-family:'Fraunces', serif; font-size:1.6rem; color:var(--forest); }
+
+  /* SECTION HEADS */
+  section{ padding:96px 0; }
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head .eyebrow{ margin-bottom:14px; }
+  .section-head h2{ font-size:clamp(2rem, 3.4vw, 2.8rem); line-height:1.1; }
+  .section-head p{ margin-top:16px; font-size:1.05rem; opacity:0.75; line-height:1.6; }
+
+  /* ACCOUNTS */
+  .accounts-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  .account-card{
+    background:var(--paper); padding:40px 32px; display:flex; flex-direction:column;
+  }
+  .account-card .num{ font-size:0.8rem; opacity:0.5; margin-bottom:24px; }
+  .account-card h3{ font-size:1.5rem; margin-bottom:12px; }
+  .account-card p{ font-size:0.95rem; line-height:1.6; opacity:0.75; flex-grow:1; }
+  .account-card .rate{
+    margin-top:28px; padding-top:20px; border-top:1px solid var(--line);
+    display:flex; align-items:baseline; justify-content:space-between;
+  }
+  .account-card .rate .apy{ font-family:'Fraunces', serif; font-size:1.8rem; color:var(--gold); }
+  .account-card .rate .label{ font-size:0.78rem; opacity:0.6; }
+
+  /* WHY / FEATURES */
+  .features{ background:var(--forest); color:var(--paper); }
+  .features .eyebrow{ color:var(--sage); opacity:1; }
+  .features .section-head p{ color:var(--paper); opacity:0.7; }
+  .feature-list{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:1px;
+    background:rgba(245,242,234,0.15);
+  }
+  .feature-item{
+    background:var(--forest); padding:36px 8px;
+    display:flex; gap:20px;
+  }
+  .feature-item .dot{
+    width:8px; height:8px; border-radius:50%; background:var(--gold);
+    flex-shrink:0; margin-top:10px;
+  }
+  .feature-item h4{ font-family:'Fraunces', serif; font-weight:450; font-size:1.2rem; margin-bottom:8px; }
+  .feature-item p{ font-size:0.92rem; opacity:0.65; line-height:1.6; }
+
+  /* CTA */
+  .cta-band{
+    padding:100px 32px; text-align:center;
+  }
+  .cta-band h2{ font-size:clamp(2.2rem, 4vw, 3.2rem); max-width:16ch; margin:0 auto 28px; line-height:1.1; }
+  .cta-band .btn-primary{ font-size:1rem; padding:16px 36px; }
+
+  /* FOOTER */
+  footer{
+    border-top:1px solid var(--line); padding:56px 32px 32px;
+    background:rgba(23,54,43,0.03);
+  }
+  .footer-grid{
+    display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px;
+    margin-bottom:48px;
+  }
+  .footer-grid h5{ font-size:0.8rem; text-transform:uppercase; letter-spacing:0.08em; opacity:0.6; margin-bottom:16px; }
+  .footer-grid ul{ list-style:none; }
+  .footer-grid li{ margin-bottom:10px; font-size:0.92rem; }
+  .footer-grid li a{ opacity:0.75; transition:opacity 0.2s; }
+  .footer-grid li a:hover{ opacity:1; }
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:28px; border-top:1px solid var(--line);
+    font-size:0.8rem; opacity:0.55; flex-wrap:wrap; gap:12px;
+  }
+  .disclosure{
+    max-width:1180px; margin:24px auto 0; padding:16px 32px;
+    font-size:0.78rem; opacity:0.5; line-height:1.6;
+  }
+
+  /* SIGNUP MODAL */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(14,36,28,0.55);
+    display:none; align-items:center; justify-content:center;
+    padding:24px; z-index:100;
+  }
+  .modal-overlay.open{ display:flex; }
+  .modal-box{
+    background:var(--paper); max-width:440px; width:100%;
+    border-radius:4px; padding:40px 32px; position:relative;
+    max-height:90vh; overflow-y:auto;
+  }
+  .modal-close{
+    position:absolute; top:16px; right:16px; background:none; border:none;
+    font-size:1.4rem; cursor:pointer; color:var(--ink); opacity:0.5; line-height:1;
+    padding:8px;
+  }
+  .modal-close:hover{ opacity:1; }
+  .modal-box .eyebrow{ display:block; margin-bottom:8px; }
+  .modal-box h3{ font-size:1.6rem; margin-bottom:8px; }
+  .modal-sub{ font-size:0.92rem; opacity:0.7; margin-bottom:28px; line-height:1.5; }
+  .field{ margin-bottom:18px; }
+  .field label{
+    display:block; font-size:0.82rem; margin-bottom:6px; opacity:0.75;
+  }
+  .field input{
+    width:100%; padding:12px 14px; border:1px solid var(--line);
+    border-radius:2px; background:#fff; font-family:'Source Sans 3', sans-serif;
+    font-size:0.95rem; color:var(--ink);
+  }
+  .field input:focus{ outline:2px solid var(--gold); outline-offset:1px; border-color:transparent; }
+  .field-error{ font-size:0.78rem; color:#a13d3d; margin-top:6px; display:none; }
+  .field.invalid input{ border-color:#a13d3d; }
+  .field.invalid .field-error{ display:block; }
+  .modal-submit{
+    width:100%; padding:14px; background:var(--forest); color:var(--paper);
+    border:none; border-radius:2px; font-size:0.95rem; font-weight:500;
+    cursor:pointer; margin-top:8px; font-family:'Source Sans 3', sans-serif;
+    transition:background 0.2s;
+  }
+  .modal-submit:hover{ background:var(--forest-deep); }
+  .modal-note{
+    font-size:0.75rem; opacity:0.5; margin-top:16px; line-height:1.5; text-align:center;
+  }
+  .modal-success{ display:none; text-align:center; padding:12px 0; }
+  .modal-success.show{ display:block; }
+  .modal-success .check{
+    width:52px; height:52px; border-radius:50%; background:var(--forest);
+    color:var(--paper); display:flex; align-items:center; justify-content:center;
+    font-size:1.5rem; margin:0 auto 20px;
+  }
+  .modal-success h3{ margin-bottom:10px; }
+  .modal-success p{ font-size:0.92rem; opacity:0.7; line-height:1.6; margin-bottom:24px; }
+  .modal-form.hidden{ display:none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px){
+    .navlinks{ display:none; }
+    .hero{ grid-template-columns:1fr; gap:48px; padding-top:64px; }
+    .strip .wrap{ grid-template-columns:repeat(2,1fr); row-gap:20px; }
+    .strip-item:nth-child(2){ border-right:none; }
+    .accounts-grid{ grid-template-columns:1fr; }
+    .feature-list{ grid-template-columns:1fr; }
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand"><span class="mark" aria-hidden="true"></span>Castro Credit Union</div>
+    <div class="navlinks">
+      <a href="#accounts">Accounts</a>
+      <a href="#why">Why a credit union</a>
+      <a href="#rates">Rates</a>
+    </div>
+    <a href="#" class="navcta" onclick="openSignup(event)">Open an account</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <span class="eyebrow mono">Fictional demo institution — not a real bank</span>
+    <h1>Banking that answers to <em>you</em>, not shareholders.</h1>
+    <p class="hero-sub">Castro Credit Union is member-owned: every account holder holds a stake, every dollar of profit returns to the people who bank here.</p>
+    <div class="hero-actions">
+      <a href="#accounts" class="btn-primary">See accounts</a>
+      <a href="#why" class="btn-ghost">How membership works</a>
+    </div>
+  </div>
+
+  <div class="ring-panel">
+    <span class="mono">Ownership structure</span>
+    <div class="ring-visual">
+      <svg viewBox="0 0 200 200" role="img" aria-label="Diagram showing member ownership as a ring of equal segments">
+        <circle cx="100" cy="100" r="88" fill="none" stroke="#17362B" stroke-opacity="0.12" stroke-width="1"/>
+        <g>
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#9FBBA0" stroke-width="16"
+            stroke-dasharray="10.5 3.2" stroke-linecap="round" transform="rotate(-90 100 100)"/>
+        </g>
+        <circle cx="100" cy="100" r="46" fill="#17362B"/>
+        <text x="100" y="105" text-anchor="middle" font-family="Fraunces, serif" font-size="15" fill="#F5F2EA">You</text>
+      </svg>
+    </div>
+    <div class="ring-stat">
+      <div class="big">1</div>
+      <div class="cap mono">member = 1 vote, regardless of balance</div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-item"><span class="mono">Founded</span><div class="val">1987</div></div>
+    <div class="strip-item"><span class="mono">Members</span><div class="val">42,000+</div></div>
+    <div class="strip-item"><span class="mono">Branches</span><div class="val">6 local</div></div>
+    <div class="strip-item"><span class="mono">Profit returned</span><div class="val">100%</div></div>
+  </div>
+</div>
+
+<section id="accounts">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow mono">Accounts</span>
+      <h2>Three ways to keep your money working.</h2>
+      <p>No minimum-balance surprises, no maintenance fees carved out in fine print. Rates shown are illustrative for this demo.</p>
+    </div>
+
+    <div class="accounts-grid">
+      <div class="account-card">
+        <div class="num mono">01 — Everyday</div>
+        <h3>Free Checking</h3>
+        <p>Your day-to-day account. No monthly fee, no minimum balance, early direct-deposit access.</p>
+        <div class="rate"><span class="apy">0.05%</span><span class="label mono">APY</span></div>
+      </div>
+      <div class="account-card">
+        <div class="num mono">02 — Building</div>
+        <h3>High-Yield Savings</h3>
+        <p>A savings account that keeps pace with inflation better than the national average, with no withdrawal penalties.</p>
+        <div class="rate"><span class="apy">4.35%</span><span class="label mono">APY</span></div>
+      </div>
+      <div class="account-card">
+        <div class="num mono">03 — Locking in</div>
+        <h3>12-Month Term Share</h3>
+        <p>Lock in today's rate for a year. Best for money you won't need to touch before the term ends.</p>
+        <div class="rate"><span class="apy">4.90%</span><span class="label mono">APY</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="features">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow mono">Why a credit union</span>
+      <h2>The difference is who the bank works for.</h2>
+      <p>Credit unions are not-for-profit and member-owned. Here's what that changes in practice.</p>
+    </div>
+
+    <div class="feature-list">
+      <div class="feature-item">
+        <span class="dot" aria-hidden="true"></span>
+        <div>
+          <h4>Lower loan rates</h4>
+          <p>Without shareholders to pay, savings on auto and personal loans get passed to members instead.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="dot" aria-hidden="true"></span>
+        <div>
+          <h4>Fewer, clearer fees</h4>
+          <p>Checking accounts carry no monthly fee. What you see when you open the account is what you pay.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="dot" aria-hidden="true"></span>
+        <div>
+          <h4>A vote, not just an account</h4>
+          <p>Members elect the volunteer board that sets policy — one member, one vote, no matter the balance.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="dot" aria-hidden="true"></span>
+        <div>
+          <h4>Money stays local</h4>
+          <p>Deposits are lent back out to members in the same community, not routed to distant shareholders.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="rates">
+  <span class="eyebrow mono">Get started</span>
+  <h2>Opening an account takes about ten minutes.</h2>
+  <a href="#" class="btn-primary" onclick="openSignup(event)">Start your application</a>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:12px;"><span class="mark" aria-hidden="true"></span>Castro Credit Union</div>
+        <p style="font-size:0.9rem; opacity:0.7; max-width:32ch; line-height:1.6;">A fictional, member-owned credit union built as a design demo.</p>
+      </div>
+      <div>
+        <h5>Accounts</h5>
+        <ul>
+          <li><a href="#accounts">Checking</a></li>
+          <li><a href="#accounts">Savings</a></li>
+          <li><a href="#accounts">Term shares</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>About</h5>
+        <ul>
+          <li><a href="#why">Membership</a></li>
+          <li><a href="#">Governance</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Branch locator</a></li>
+          <li><a href="#">Report an issue</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Castro Credit Union (fictional)</span>
+      <span>Design demo — not a financial institution</span>
+    </div>
+  </div>
+  <div class="disclosure wrap">
+    Castro Credit Union is a fictional institution created for design demonstration purposes only. It is not a real bank or credit union, is not insured by the NCUA or any deposit insurer, and cannot accept deposits or process transactions. Any resemblance to a real financial institution is unintentional.
+  </div>
+</footer>
+
+<div class="modal-overlay" id="signupOverlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeSignup()" aria-label="Close">&times;</button>
+
+    <form class="modal-form" id="signupForm" onsubmit="return handleSignup(event)">
+      <span class="eyebrow mono">Open an account</span>
+      <h3>Join Castro Credit Union</h3>
+      <p class="modal-sub">This is a design demo. Nothing you enter is saved, sent, or stored anywhere — the form only shows what a real signup flow might look like.</p>
+
+      <div class="field" id="field-name">
+        <label for="fullname">Full name</label>
+        <input type="text" id="fullname" placeholder="Jordan Lee">
+        <div class="field-error">Enter your full name.</div>
+      </div>
+
+      <div class="field" id="field-email">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com">
+        <div class="field-error">Enter a valid email address.</div>
+      </div>
+
+      <div class="field" id="field-password">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="At least 8 characters">
+        <div class="field-error">Password must be at least 8 characters.</div>
+      </div>
+
+      <button type="submit" class="modal-submit">Create account</button>
+      <p class="modal-note">Demo only — no account is actually created and no data leaves this page.</p>
+    </form>
+
+    <div class="modal-success" id="signupSuccess">
+      <div class="check">&#10003;</div>
+      <h3>This is where a welcome screen would go</h3>
+      <p>In a real product, you'd land here after verifying your email and setting up your first account. Nothing was submitted or saved — this demo doesn't have a backend.</p>
+      <button class="modal-submit" onclick="closeSignup()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openSignup(e){
+    if(e) e.preventDefault();
+    document.getElementById('signupOverlay').classList.add('open');
+    document.getElementById('signupForm').classList.remove('hidden');
+    document.getElementById('signupSuccess').classList.remove('show');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSignup(){
+    document.getElementById('signupOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+    document.getElementById('signupForm').reset();
+    ['field-name','field-email','field-password'].forEach(id =>
+      document.getElementById(id).classList.remove('invalid'));
+  }
+  document.getElementById('signupOverlay').addEventListener('click', function(e){
+    if(e.target === this) closeSignup();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeSignup();
+  });
+
+  function handleSignup(e){
+    e.preventDefault();
+    const name = document.getElementById('fullname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    let valid = true;
+    toggleField('field-name', name.length > 1);
+    toggleField('field-email', emailOk);
+    toggleField('field-password', password.length >= 8);
+    valid = name.length > 1 && emailOk && password.length >= 8;
+
+    if(valid){
+      document.getElementById('signupForm').classList.add('hidden');
+      document.getElementById('signupSuccess').classList.add('show');
+    }
+    return false;
+  }
+  function toggleField(id, isValid){
+    document.getElementById(id).classList.toggle('invalid', !isValid);
+  }
+</script>
+
+</body>
+</html>
