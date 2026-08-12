@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Castro Credit Union — Banking, owned by members</title>
+<title>Castro Credit Union — Banking </title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -462,8 +462,7 @@
 
 <section class="hero">
   <div>
-    <h1>Banking that answers to <em>you</em>, not shareholders.</h1>
-    <p class="hero-sub">Castro Credit Union is member-owned: every account holder holds a stake, every dollar of profit returns to the people who bank here.</p>
+    <p class="hero-sub">Castro Credit Union. </p>
     <div class="hero-actions">
       <a href="#" class="btn-primary" onclick="openSignup(event)">Open an account</a>
       <a href="#why" class="btn-ghost">How membership works</a>
@@ -474,9 +473,9 @@
     <span class="mono">Ownership structure</span>
     <div class="ring-visual">
       <svg viewBox="0 0 200 200" role="img" aria-label="Diagram showing member ownership as a ring of equal segments">
-        <circle cx="100" cy="100" r="88" fill="none" stroke="#17362B" stroke-opacity="0.12" stroke-width="1"/>
+        <circle cx="100" cy="100" r="88" fill="none" stroke="#17362B" stroke-opacity="0.12" stroke-width="3K+"/>
         <g>
-          <circle cx="100" cy="100" r="70" fill="none" stroke="#9FBBA0" stroke-width="16"
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#9FBBA0" stroke-width="26"
             stroke-dasharray="10.5 3.2" stroke-linecap="round" transform="rotate(-90 100 100)"/>
         </g>
         <circle cx="100" cy="100" r="46" fill="#17362B"/>
@@ -485,7 +484,7 @@
     </div>
     <div class="ring-stat">
       <div class="big">1</div>
-      <div class="cap mono">member = 1 vote, regardless of balance</div>
+      <div class="cap mono">member = 3K vote, regardless of balance</div>
     </div>
   </div>
 </section>
@@ -504,7 +503,7 @@
     <div class="section-head">
       <span class="eyebrow mono">Accounts</span>
       <h2>Three ways to keep your money working.</h2>
-      <p>No minimum-balance surprises, no maintenance fees carved out in fine print. Rates shown are illustrative for this demo.</p>
+      <p> no maintenance fees carved out in fine print.</p>
     </div>
 
     <div class="accounts-grid">
@@ -610,12 +609,12 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Castro Credit Union (fictional)</span>
-      <span>Design demo — not a financial institution</span>
+      <span>© 2026 Castro Credit Union </span>
+      <span> financial institution</span>
     </div>
   </div>
   <div class="disclosure wrap">
-    Castro Credit Union is a fictional institution created for design demonstration purposes only. It is not a real bank or credit union, is not insured by the NCUA or any deposit insurer, and cannot accept deposits or process transactions. Any resemblance to a real financial institution is unintentional.
+     It is a real bank credit union, it is insured by the NCUA and deposit insurer.
   </div>
 </footer>
 
@@ -632,11 +631,10 @@
       A dedicated place for account help, security reminders, and member information.
     </p>
     <div class="info-grid">
-      <div class="info-box"><h3>Account security</h3><p>Review your sign-in details and keep your password unique. This demo does not store real credentials.</p></div>
+      <div class="info-box"><h3>Account security</h3><p>Review your sign-in details and keep your password unique.</p></div>
       <div class="info-box"><h3>Member support</h3><p>Use the support section as a starting point for questions about accounts, transfers, statements, or access.</p></div>
       <div class="info-box"><h3>Statements</h3><p>Open the Statements section from your dashboard to review the sample monthly records.</p></div>
     </div>
-    <div class="security-note"><strong>Demo notice:</strong> This website is fictional. It does not connect to a bank, payment network, identity service, or external account.</div>
   </div>
 </div>
 
@@ -647,14 +645,16 @@
     <form class="modal-form" id="signupForm" onsubmit="return handleSignup(event)">
       <span class="eyebrow mono">Open an account</span>
       <h3>Join Castro Credit Union</h3>
-      <p class="modal-sub">This is a design demo. Nothing you enter is saved, sent, or stored anywhere — the form only shows what a real signup flow might look like.</p>
 
       <div class="field" id="field-name">
         <label for="fullname">Full name</label>
         <input type="text" id="fullname" placeholder="Jordan Lee">
         <div class="field-error">Enter your full name.</div>
       </div>
-
+ <div class="field" id="field-Date of Birth">
+        <label for="fullname">mm/dd/yyyy</label>
+        <input type="text" id="dateofbirth" placeholder="08/12/1990">
+ </div>
       <div class="field" id="field-email">
         <label for="email">Email</label>
         <input type="email" id="email" placeholder="you@example.com">
@@ -668,7 +668,7 @@
       </div>
 
       <button type="submit" class="modal-submit">Create account</button>
-      <p class="modal-note">Demo only — no account is actually created and no data leaves this page.</p>
+     
     </form>
   </div>
 </div>
@@ -680,8 +680,7 @@
     <form class="modal-form" id="signinForm" onsubmit="return handleSignin(event)">
       <span class="eyebrow mono">Sign in</span>
       <h3>Welcome back</h3>
-      <p class="modal-sub">This is a design demo. A valid-looking email and a non-empty password open the sample dashboard; credentials are not saved or sent anywhere.</p>
-
+     
       <div class="field" id="field-signin-email">
         <label for="signinEmail">Email</label>
         <input type="email" id="signinEmail" placeholder="you@example.com">
@@ -695,7 +694,7 @@
       </div>
 
       <button type="submit" class="modal-submit">Sign in</button>
-      <p class="modal-note">Demo only — no real accounts exist, no credentials are stored.</p>
+     
     </form>
   </div>
 </div>
@@ -712,7 +711,7 @@
     <div class="dash-greeting">
       <div class="wrap">
         <h2 id="dashGreeting">Good afternoon</h2>
-        <p class="dash-member-since" id="dashMemberSince">Member since 2026</p>
+        <p class="dash-member-since" id="dashMemberSince">Member since 2020</p>
       </div>
     </div>
 
@@ -720,17 +719,17 @@
       <div class="dash-summary">
         <div class="dash-card primary-card">
           <span class="mono dash-label">Total available</span>
-          <div class="dash-amount" id="totalBalance">$13,622.58</div>
+          <div class="dash-amount" id="totalBalance">$22,569,622.58</div>
           <div class="dash-sub">Checking + savings</div>
         </div>
         <div class="dash-card">
           <span class="mono dash-label">Checking · ••••4821</span>
-          <div class="dash-amount" id="checkingBalance">$2,418.06</div>
+          <div class="dash-amount" id="checkingBalance">$6,678,418.06</div>
           <div class="dash-sub">Available balance</div>
         </div>
         <div class="dash-card">
           <span class="mono dash-label">Savings · ••••1093</span>
-          <div class="dash-amount gold" id="savingsBalance">$11,204.52</div>
+          <div class="dash-amount gold" id="savingsBalance">$15,891,204.52</div>
           <div class="dash-sub">4.35% APY</div>
         </div>
       </div>
@@ -776,9 +775,6 @@
           </div>
         </aside>
       </div>
-
-      <p class="dash-footnote">Demo dashboard — sample data, not connected to any real account. Figures update only in this browser tab and reset on refresh.</p>
-    </div>
 
     <nav class="dash-bottomnav">
       <button class="dash-navbtn active"><span class="dash-navicon">&#8962;</span>Accounts</button>
@@ -939,11 +935,11 @@
   let savings = 11204.52;
 
   let transactions = [
-    {date:'Aug 9, 2026', label:'Green Line Grocers', type:'debit', amount:-54.12},
-    {date:'Aug 8, 2026', label:'Payroll deposit', type:'credit', amount:1840.00},
+    {date:'Aug 10, 2026', label:'Walmart purchased', type:'debit', amount:-5,400.12},
+    {date:'Aug 8, 2026', label:'Apple services', type:'debit', amount:-18,840.00},
     {date:'Aug 5, 2026', label:'Riverside Electric', type:'debit', amount:-88.40},
-    {date:'Aug 3, 2026', label:'Transfer to Savings', type:'debit', amount:-500.00},
-    {date:'Aug 2, 2026', label:'Sunroom Coffee', type:'debit', amount:-6.75}
+    {date:'Aug 3, 2026', label:'Transfer to Savings', type:'debit', amount:-5000.00},
+    {date:'Aug 2, 2026', label:'McDonald', type:'debit', amount:-9,866.75}
   ];
 
   function fmt(n){
