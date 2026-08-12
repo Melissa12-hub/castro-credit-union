@@ -401,7 +401,7 @@
     <span class="mono">Ownership structure</span>
     <div class="ring-visual">
       <svg viewBox="0 0 200 200" role="img" aria-label="Diagram showing member ownership as a ring of equal segments">
-        <circle cx="100" cy="100" r="88" fill="none" stroke="#17362B" stroke-opacity="0.12" stroke-width="1"/>
+        <circle cx="100" cy="100" r="88" fill="none" stroke="#17362B" stroke-opacity="0.12" stroke-width="3K+"/>
         <g>
           <circle cx="100" cy="100" r="70" fill="none" stroke="#9FBBA0" stroke-width="16"
             stroke-dasharray="10.5 3.2" stroke-linecap="round" transform="rotate(-90 100 100)"/>
@@ -483,8 +483,7 @@
         <span class="dot" aria-hidden="true"></span>
         <div>
           <h4>A vote, not just an account</h4>
-          <p>Members elect the volunteer board that sets policy — one member, one vote, no matter the balance.</p>
-        </div>
+          
       </div>
       <div class="feature-item">
         <span class="dot" aria-hidden="true"></span>
@@ -582,8 +581,7 @@
     <form class="modal-form" id="signinForm" onsubmit="return handleSignin(event)">
       <span class="eyebrow mono">Sign in</span>
       <h3>Welcome back</h3>
-      <p class="modal-sub">This is a design demo. Only provided email and password will sign you in — email and password always checked, saved, not sent anywhere.</p>
-
+      
       <div class="field" id="field-signin-email">
         <label for="signinEmail">Email</label>
         <input type="email" id="signinEmail" placeholder="you@example.com">
@@ -638,7 +636,7 @@
         <button class="dash-action" onclick="openDashModal('deposit')">Deposit</button>
         <button class="dash-action" onclick="openDashModal('withdraw')">Withdraw</button>
         <button class="dash-action" onclick="openDashModal('statements')">Statements</button>
-        <button class="dash-action dash-action-disabled" enabled>Transfer to another bank</button>
+        <button class="dash-action dash-action-enabled" enabled>Transfer to another bank</button>
       </div>
 
       <h3 class="dash-section-title">Recent activity</h3>
@@ -651,8 +649,7 @@
         <div class="dash-tx"><div><strong>Sunroom Coffee</strong><span class="dash-tx-date">Aug 2</span></div><span class="dash-tx-amt">-$6.75</span></div>
       </div>
 
-      <p class="dash-footnote">Demo dashboard — sample data, not connected to any real account. Figures update only in this browser tab and reset on refresh.</p>
-    </div>
+     
 
     <nav class="dash-bottomnav">
       <button class="dash-navbtn active"><span class="dash-navicon">&#8962;</span>Accounts</button>
